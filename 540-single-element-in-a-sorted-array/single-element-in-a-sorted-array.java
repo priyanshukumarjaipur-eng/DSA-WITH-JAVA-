@@ -1,12 +1,13 @@
 class Solution {
-    public int singleNonDuplicate(int[] arr) {
-        int n=arr.length;
-        if(n==1) return arr[0];
-        for(int i=0;i<n-1;i+=2){
-            if(arr[i]!=arr[i+1]){
-                return arr[i];
-            }
+        public int singleNonDuplicate(int[] nums) {
+        int left = 0, right = nums.length-1;
+        while(left < right){
+            int mid = (left + right)/2;
+            if( (mid % 2 == 0 && nums[mid] == nums[mid +1]) || (mid %2 == 1 && nums[mid] == nums[mid - 1]) )
+                left = mid + 1;
+            else
+                right = mid;
         }
-        return arr[n-1];
-    }
+        return nums[left];
+    }   
 }
