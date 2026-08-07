@@ -1,13 +1,14 @@
 class Solution {
     public int uniquePaths(int m, int n) {
-        long ans = 1;
-        int totalMoves = m + n - 2;
-        int downMoves = Math.min(m - 1, n - 1); 
-        
-        for (int i = 1; i <= downMoves; i++) {
-            ans = ans * (totalMoves - downMoves + i) / i;
+        int dp[][]=new int[m][n];
+        return countpath(m-1,n-1,dp);
+    }
+    public static int countpath(int r,int c,int dp[][]){
+        if(r==0 || c==0) return 1;
+        if(dp[r][c]!=0){
+            return dp[r][c];
         }
-        
-        return (int) ans;
+        dp[r][c]=countpath(r,c-1,dp)+countpath(r-1,c,dp);
+        return dp[r][c];
     }
 }
