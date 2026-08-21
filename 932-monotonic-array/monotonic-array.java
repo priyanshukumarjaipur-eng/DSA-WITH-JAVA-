@@ -20,9 +20,6 @@ class Solution {
         return false;
     }
     public boolean isMonotonic(int[] nums) {
-        if(isgreater(nums) || issmaller(nums)){
-            return true;
-        }
-        return false;
+         return isgreater(nums) || issmaller(nums);
     }
 }
