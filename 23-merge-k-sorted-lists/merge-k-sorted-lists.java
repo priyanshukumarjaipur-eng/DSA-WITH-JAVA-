@@ -46,7 +46,7 @@ class Solution {
             ListNode b=arr.get(arr.size()-1);
             arr.remove(arr.size()-1);
             ListNode c=merge(a,b);
-            arr.add(0,c);
+            arr.add(c);
         }
         return arr.get(0);
     }
