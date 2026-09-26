@@ -14,24 +14,18 @@
  * }
  */
 class Solution {
-    public static void mirror(TreeNode root){
-        if(root==null)return;
-        if(root.left==null && root.right== null) return;
-        TreeNode l=root.left;
-        TreeNode r=root.right;
-        root.left=r;
-        root.right=l;
-        mirror(root.left);
-        mirror(root.right);
-    }
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) return true;
-        if (p == null || q == null) return false;
-        if (p.val != q.val) return false;
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    public static boolean check(TreeNode l,TreeNode r){
+        if(l==null && r==null) return true;
+        if(l==null || r==null) return false;
+        if(l.val!=r.val){
+            return false;
+        }
+        return check(l.left,r.right)&& check(l.right,r.left);
     }
     public boolean isSymmetric(TreeNode root) {
-        mirror(root.left);
-        return isSameTree(root.left,root.right);
+        if (root == null) return true; 
+        TreeNode l=root.left;
+        TreeNode r=root.right;
+        return check(l,r);
     }
 }
