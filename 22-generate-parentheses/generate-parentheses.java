@@ -10,6 +10,7 @@ class Solution {
     public List<String> generateParenthesis(int n) {
         ArrayList<String> ans=new ArrayList<>();
         generate(n,0,0,"",ans);
+        System.out.println(ans);
         return ans;
     }
 }
